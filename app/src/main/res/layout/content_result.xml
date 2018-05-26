@@ -28,7 +28,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true">
 
 
         <android.support.constraint.ConstraintLayout
@@ -187,7 +189,9 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
+                        app:layout_constraintVertical_bias="0.0"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true">
 
 
                         <android.support.constraint.ConstraintLayout
@@ -226,17 +230,6 @@
                                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/imageView11"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginEnd="12dp"
-                                android:layout_marginStart="8dp"
-                                android:src="@drawable/adidas_logo"
-                                app:layout_constraintEnd_toStartOf="@+id/imageView6"
-                                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                                tools:layout_editor_absoluteY="48dp" />
 
                             <TextView
                                 android:id="@+id/textView8"
@@ -311,7 +304,9 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
+                        app:layout_constraintVertical_bias="0.0"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true">
 
 
                         <android.support.constraint.ConstraintLayout
@@ -350,17 +345,6 @@
                                 android:src="@drawable/ic_location_on_black_24dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/textView11" />
-
-                            <ImageView
-                                android:id="@+id/imageView12"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:src="@drawable/adidas_logo"
-                                app:layout_constraintEnd_toStartOf="@+id/imageView13"
-                                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                                tools:layout_editor_absoluteY="48dp" />
 
                             <ImageView
                                 android:id="@+id/imageView5"
@@ -422,7 +406,9 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
+                        app:layout_constraintVertical_bias="0.0"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true">
 
 
                         <android.support.constraint.ConstraintLayout
@@ -438,17 +424,6 @@
                                 android:src="@drawable/ic_location_on_black_24dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/textView13" />
-
-                            <ImageView
-                                android:id="@+id/imageView14"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:src="@drawable/adidas_logo"
-                                app:layout_constraintEnd_toStartOf="@+id/imageView15"
-                                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                                tools:layout_editor_absoluteY="48dp" />
 
                             <TextView
                                 android:id="@+id/textView13"
