@@ -45,18 +45,14 @@ public final class LivePreviewActivity extends AppCompatActivity
     implements OnRequestPermissionsResultCallback,
         OnItemSelectedListener,
         CompoundButton.OnCheckedChangeListener {
-  private static final String FACE_DETECTION = "Face Detection";
-  private static final String TEXT_DETECTION = "Text Detection";
-  private static final String BARCODE_DETECTION = "Barcode Detection";
   private static final String IMAGE_LABEL_DETECTION = "Label Detection";
-  private static final String CLASSIFICATION = "Classification";
   private static final String TAG = "LivePreviewActivity";
   private static final int PERMISSION_REQUESTS = 1;
 
   private CameraSource cameraSource = null;
   private CameraSourcePreview preview;
   private GraphicOverlay graphicOverlay;
-  private String selectedModel = FACE_DETECTION;
+  private String selectedModel = IMAGE_LABEL_DETECTION;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +72,7 @@ public final class LivePreviewActivity extends AppCompatActivity
 
     Spinner spinner = (Spinner) findViewById(R.id.spinner);
     List<String> options = new ArrayList<>();
-    options.add(FACE_DETECTION);
-    options.add(TEXT_DETECTION);
-    options.add(BARCODE_DETECTION);
     options.add(IMAGE_LABEL_DETECTION);
-    options.add(CLASSIFICATION);
     // Creating adapter for spinner
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
     // Drop down layout style - list view with radio button
