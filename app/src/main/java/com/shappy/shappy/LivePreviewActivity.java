@@ -54,7 +54,6 @@ public final class LivePreviewActivity extends AppCompatActivity
 
   private CameraSource cameraSource = null;
   private CameraSourcePreview preview;
-  private GraphicOverlay graphicOverlay;
   private String selectedModel = IMAGE_LABEL_DETECTION;
 
   @Override
@@ -69,6 +68,8 @@ public final class LivePreviewActivity extends AppCompatActivity
     ImageView i = findViewById(R.id.imageView3);
     i.bringToFront();
 
+    ImageLabelingProcessor.setTextView(findViewById(R.id.textView1));
+
     Button button = findViewById(R.id.button);
       button.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
@@ -79,10 +80,6 @@ public final class LivePreviewActivity extends AppCompatActivity
     preview = findViewById(R.id.firePreview);
     if (preview == null) {
       Log.d(TAG, "Preview is null");
-    }
-    graphicOverlay = findViewById(R.id.fireFaceOverlay);
-    if (graphicOverlay == null) {
-      Log.d(TAG, "graphicOverlay is null");
     }
 
     ToggleButton facingSwitch = findViewById(R.id.facingswitch);
@@ -132,7 +129,7 @@ public final class LivePreviewActivity extends AppCompatActivity
   private void createCameraSource(String model) {
     // If there's no existing cameraSource, create one.
     if (cameraSource == null) {
-      cameraSource = new CameraSource(this, graphicOverlay);
+      cameraSource = new CameraSource(this);
     }
 
     switch (model) {
@@ -156,10 +153,7 @@ public final class LivePreviewActivity extends AppCompatActivity
         if (preview == null) {
           Log.d(TAG, "resume: Preview is null");
         }
-        if (graphicOverlay == null) {
-          Log.d(TAG, "resume: graphOverlay is null");
-        }
-        preview.start(cameraSource, graphicOverlay);
+        preview.start(cameraSource);
       } catch (IOException e) {
         Log.e(TAG, "Unable to start camera source.", e);
         cameraSource.release();
