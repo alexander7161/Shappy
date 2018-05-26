@@ -69,6 +69,7 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
     graphicOverlay.add(labelGraphic);
     boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("hoe"));
     if (isShoe) {
+        Log.d("shoe", "Shoe");
         Intent myIntent = new Intent(context, ResultActivity.class);
         context.startActivity(myIntent);
     }
