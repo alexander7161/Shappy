@@ -76,16 +76,16 @@ public final class LivePreviewActivity extends AppCompatActivity
           }
       });
 
-    preview = (CameraSourcePreview) findViewById(R.id.firePreview);
+    preview = findViewById(R.id.firePreview);
     if (preview == null) {
       Log.d(TAG, "Preview is null");
     }
-    graphicOverlay = (GraphicOverlay) findViewById(R.id.fireFaceOverlay);
+    graphicOverlay = findViewById(R.id.fireFaceOverlay);
     if (graphicOverlay == null) {
       Log.d(TAG, "graphicOverlay is null");
     }
 
-    ToggleButton facingSwitch = (ToggleButton) findViewById(R.id.facingswitch);
+    ToggleButton facingSwitch = findViewById(R.id.facingswitch);
     facingSwitch.setOnCheckedChangeListener(this);
 
     if (allPermissionsGranted()) {
