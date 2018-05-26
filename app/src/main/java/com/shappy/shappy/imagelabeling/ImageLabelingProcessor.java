@@ -78,6 +78,7 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
         stop();
         Intent myIntent = new Intent(context, ResultActivity.class);
         context.startActivity(myIntent);
+        clicked=false;
     }
   }
 
