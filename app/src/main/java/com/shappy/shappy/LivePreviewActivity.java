@@ -26,7 +26,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
@@ -64,6 +66,15 @@ public final class LivePreviewActivity extends AppCompatActivity
 
     RelativeLayout r = findViewById(R.id.pop_up);
     r.bringToFront();
+    ImageView i = findViewById(R.id.imageView3);
+    i.bringToFront();
+
+    Button button = findViewById(R.id.button);
+      button.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+            ImageLabelingProcessor.setClicked();
+          }
+      });
 
     preview = (CameraSourcePreview) findViewById(R.id.firePreview);
     if (preview == null) {
