@@ -127,7 +127,7 @@ public final class LivePreviewActivity extends AppCompatActivity
     switch (model) {
       case IMAGE_LABEL_DETECTION:
         Log.i(TAG, "Using Image Label Detector Processor");
-        cameraSource.setMachineLearningFrameProcessor(new ImageLabelingProcessor());
+        cameraSource.setMachineLearningFrameProcessor(new ImageLabelingProcessor(getApplicationContext()));
         break;
       default:
         Log.e(TAG, "Unknown model: " + model);
