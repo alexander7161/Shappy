@@ -40,9 +40,15 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
 
   private Context context;
 
+  private static boolean clicked;
+
   public ImageLabelingProcessor(Context context) {
     detector = FirebaseVision.getInstance().getVisionLabelDetector();
     this.context = context;
+  }
+
+  public static void setClicked() {
+      clicked = true;
   }
 
   @Override
@@ -67,9 +73,9 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
     graphicOverlay.clear();
     LabelGraphic labelGraphic = new LabelGraphic(graphicOverlay, labels);
     graphicOverlay.add(labelGraphic);
-    boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("hoe"));
-    if (isShoe) {
-        Log.d("shoe", "Shoe");
+    boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("Shoe"));
+    if (isShoe && clicked) {
+        stop();
         Intent myIntent = new Intent(context, ResultActivity.class);
         context.startActivity(myIntent);
     }
@@ -80,3 +86,4 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
     Log.w(TAG, "Label detection failed." + e);
   }
 }
+
