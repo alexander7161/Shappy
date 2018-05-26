@@ -61,6 +61,10 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
     graphicOverlay.clear();
     LabelGraphic labelGraphic = new LabelGraphic(graphicOverlay, labels);
     graphicOverlay.add(labelGraphic);
+    boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("Shoe"));
+    if (isShoe) {
+        Log.d("Shoe", "shoe");
+    }
   }
 
   @Override

@@ -70,17 +70,6 @@ public final class LivePreviewActivity extends AppCompatActivity
       Log.d(TAG, "graphicOverlay is null");
     }
 
-    Spinner spinner = (Spinner) findViewById(R.id.spinner);
-    List<String> options = new ArrayList<>();
-    options.add(IMAGE_LABEL_DETECTION);
-    // Creating adapter for spinner
-    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
-    // Drop down layout style - list view with radio button
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    // attaching data adapter to spinner
-    spinner.setAdapter(dataAdapter);
-    spinner.setOnItemSelectedListener(this);
-
     ToggleButton facingSwitch = (ToggleButton) findViewById(R.id.facingswitch);
     facingSwitch.setOnCheckedChangeListener(this);
 
