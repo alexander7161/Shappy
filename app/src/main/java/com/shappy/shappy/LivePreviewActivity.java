@@ -27,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
@@ -61,6 +62,9 @@ public final class LivePreviewActivity extends AppCompatActivity
 
     setContentView(R.layout.activity_live_preview);
 
+    RelativeLayout r = findViewById(R.id.pop_up);
+    r.bringToFront();
+
     preview = (CameraSourcePreview) findViewById(R.id.firePreview);
     if (preview == null) {
       Log.d(TAG, "Preview is null");
@@ -69,17 +73,6 @@ public final class LivePreviewActivity extends AppCompatActivity
     if (graphicOverlay == null) {
       Log.d(TAG, "graphicOverlay is null");
     }
-
-    Spinner spinner = (Spinner) findViewById(R.id.spinner);
-    List<String> options = new ArrayList<>();
-    options.add(IMAGE_LABEL_DETECTION);
-    // Creating adapter for spinner
-    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
-    // Drop down layout style - list view with radio button
-    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    // attaching data adapter to spinner
-    spinner.setAdapter(dataAdapter);
-    spinner.setOnItemSelectedListener(this);
 
     ToggleButton facingSwitch = (ToggleButton) findViewById(R.id.facingswitch);
     facingSwitch.setOnCheckedChangeListener(this);
@@ -134,7 +127,7 @@ public final class LivePreviewActivity extends AppCompatActivity
     switch (model) {
       case IMAGE_LABEL_DETECTION:
         Log.i(TAG, "Using Image Label Detector Processor");
-        cameraSource.setMachineLearningFrameProcessor(new ImageLabelingProcessor());
+        cameraSource.setMachineLearningFrameProcessor(new ImageLabelingProcessor(getApplicationContext()));
         break;
       default:
         Log.e(TAG, "Unknown model: " + model);

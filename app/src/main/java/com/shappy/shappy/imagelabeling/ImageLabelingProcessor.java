@@ -13,6 +13,8 @@
 // limitations under the License.
 package com.shappy.shappy.imagelabeling;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -23,6 +25,7 @@ import com.google.firebase.ml.vision.label.FirebaseVisionLabel;
 import com.google.firebase.ml.vision.label.FirebaseVisionLabelDetector;
 import com.shappy.shappy.FrameMetadata;
 import com.shappy.shappy.GraphicOverlay;
+import com.shappy.shappy.ResultActivity;
 import com.shappy.shappy.VisionProcessorBase;
 
 import java.io.IOException;
@@ -35,8 +38,11 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
 
   private final FirebaseVisionLabelDetector detector;
 
-  public ImageLabelingProcessor() {
+  private Context context;
+
+  public ImageLabelingProcessor(Context context) {
     detector = FirebaseVision.getInstance().getVisionLabelDetector();
+    this.context = context;
   }
 
   @Override
@@ -61,6 +67,11 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
     graphicOverlay.clear();
     LabelGraphic labelGraphic = new LabelGraphic(graphicOverlay, labels);
     graphicOverlay.add(labelGraphic);
+    boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("hoe"));
+    if (isShoe) {
+        Intent myIntent = new Intent(context, ResultActivity.class);
+        context.startActivity(myIntent);
+    }
   }
 
   @Override
