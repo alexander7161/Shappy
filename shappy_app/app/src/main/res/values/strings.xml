@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">shappy</string>
+    <string name="edit_message">enter message</string>
+    <string name="key_send">send</string>
+</resources>

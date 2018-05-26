@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Text Styles -->
+    <style name="CtaBlanc">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14.7sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CtaBleu">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14.7sp</item>
+        <item name="android:textColor">#67d1b9</item>
+    </style>
+
+    <style name="H2">
+        <item name="android:textSize">14.7sp</item>
+        <item name="android:textColor">#2b323a</item>
+    </style>
+
+    <style name="H3">
+        <item name="android:textSize">10.7sp</item>
+        <item name="android:textColor">#2b323a</item>
+    </style>
+
+    <style name="H1">
+        <item name="android:textSize">14.7sp</item>
+        <item name="android:lineSpacingExtra">6.7sp</item>
+        <item name="android:textColor">#2b323a</item>
+    </style>
+
+    <style name="P">
+        <item name="android:textSize">12.7sp</item>
+        <item name="android:textColor">#2b323a</item>
+    </style>
+
+    <style name="Price">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">16.7sp</item>
+        <item name="android:textColor">#67d1b9</item>
+    </style>
+
+    <style name="Location">
+        <item name="android:textSize">11.3sp</item>
+        <item name="android:textColor">#4a494a</item>
+    </style>
+
+</resources>
