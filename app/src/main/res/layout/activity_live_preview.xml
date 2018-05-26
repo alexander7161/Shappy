@@ -27,28 +27,32 @@
                 android:id="@+id/imageView3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="32dp"
+                android:translationZ="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher_foreground" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="280dp"
-                android:layout_height="89dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/camera_pop_up"
+                android:padding="10dp"
+                android:translationZ="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Hello! I'm Shappy"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
+                    android:translationZ="3dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.426"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +60,14 @@
 
                 <TextView
                     android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="12dp"
                     android:text="Show me what you like"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
+                    android:translationZ="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.622"
@@ -85,13 +90,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <com.shappy.shappy.GraphicOverlay
-            android:id="@+id/fireFaceOverlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
     </com.shappy.shappy.CameraSourcePreview>
 
     <FrameLayout

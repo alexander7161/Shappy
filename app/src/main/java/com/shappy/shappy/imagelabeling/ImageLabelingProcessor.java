@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -24,11 +25,11 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.label.FirebaseVisionLabel;
 import com.google.firebase.ml.vision.label.FirebaseVisionLabelDetector;
 import com.shappy.shappy.FrameMetadata;
-import com.shappy.shappy.GraphicOverlay;
 import com.shappy.shappy.ResultActivity;
 import com.shappy.shappy.VisionProcessorBase;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /** Custom Image Classifier Demo. */
@@ -42,6 +43,8 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
 
   private static boolean clicked;
 
+  private static TextView textView;
+
   public ImageLabelingProcessor(Context context) {
     detector = FirebaseVision.getInstance().getVisionLabelDetector();
     this.context = context;
@@ -49,6 +52,10 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
 
   public static void setClicked() {
       clicked = true;
+  }
+
+  public static void setTextView(TextView textView) {
+      ImageLabelingProcessor.textView = textView;
   }
 
   @Override
@@ -68,12 +75,28 @@ public class ImageLabelingProcessor extends VisionProcessorBase<List<FirebaseVis
   @Override
   protected void onSuccess(
       @NonNull List<FirebaseVisionLabel> labels,
-      @NonNull FrameMetadata frameMetadata,
-      @NonNull GraphicOverlay graphicOverlay) {
-    graphicOverlay.clear();
-    LabelGraphic labelGraphic = new LabelGraphic(graphicOverlay, labels);
-    graphicOverlay.add(labelGraphic);
-    boolean isShoe = labels.stream().anyMatch(t -> t.getLabel().equals("Shoe"));
+      @NonNull FrameMetadata frameMetadata) {
+      StringBuilder b = new StringBuilder();
+      labels.stream().map(FirebaseVisionLabel::getLabel).map(e -> e + " ").forEach(b::append);
+      String[] words = b.toString().split(" ");
+      List<String> textToView = new ArrayList<>();
+      if(words.length>2) {
+          for (int i = 0; i < 3; i++) {
+              textToView.add(words[i]);
+          }
+          for (int i = 3; i < words.length; i++) {
+              if (words[i].contains("Shoe") || words[i].contains("Footwear")) {
+                  textToView.set(0, words[i]);
+
+              }
+          }
+      }
+      StringBuilder a = new StringBuilder();
+      textToView.stream().map(e -> e + "\n").forEach(a::append);
+      if(textView!=null) {
+          textView.setText(a);
+      }
+    boolean isShoe = labels.stream().anyMatch(t -> (t.getLabel().equals("Shoe")) || t.getLabel().equals("Footwear"));
     if (isShoe && clicked) {
         stop();
         Intent myIntent = new Intent(context, ResultActivity.class);
